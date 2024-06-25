@@ -1,0 +1,38 @@
+.chip {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.chip-used {
+    background-color: #81C4FF; /* Light Sky Blue */
+}
+
+.chip-content {
+    position: relative;
+}
+
+.chip-stock {
+    font-weight: bold;
+}
+
+.chip-hover {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chip:hover .chip-hover {
+    display: block;
+}
