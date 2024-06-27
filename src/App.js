@@ -4,6 +4,7 @@ import axios from 'axios';
 import Chip from './components/Chip';
 import SaleForm from './components/SaleForm';
 import DateRangePicker from './components/DateRangePicker';
+import SalesTable from './components/SalesTable';
 import './App.css';
 
 const App = () => {
@@ -96,17 +97,78 @@ const AppContent = () => {
         return Object.entries(advisorMap).sort((a, b) => b[1].delivered - a[1].delivered);
     };
 
+    const getTotalCounts = () => {
+        const totals = {
+            newBMWDelivered: 0,
+            newBMWPending: 0,
+            usedBMWDelivered: 0,
+            usedBMWPending: 0,
+            cpoBMWDelivered: 0,
+            cpoBMWPending: 0,
+            newMINIDelivered: 0,
+            newMINIPending: 0,
+            cpoMINIDelivered: 0,
+            cpoMINIPending: 0,
+            usedMINIDelivered: 0,
+            usedMINIPending: 0,
+        };
+
+        filteredSales.forEach(sale => {
+            if (sale.type === 'New BMW') {
+                if (sale.delivered) totals.newBMWDelivered += 1;
+                else totals.newBMWPending += 1;
+            } else if (sale.type === 'Used BMW') {
+                if (sale.delivered) totals.usedBMWDelivered += 1;
+                else totals.usedBMWPending += 1;
+            } else if (sale.type === 'CPO BMW') {
+                if (sale.delivered) totals.cpoBMWDelivered += 1;
+                else totals.cpoBMWPending += 1;
+            } else if (sale.type === 'New MINI') {
+                if (sale.delivered) totals.newMINIDelivered += 1;
+                else totals.newMINIPending += 1;
+            } else if (sale.type === 'CPO MINI') {
+                if (sale.delivered) totals.cpoMINIDelivered += 1;
+                else totals.cpoMINIPending += 1;
+            } else if (sale.type === 'Used MINI') {
+                if (sale.delivered) totals.usedMINIDelivered += 1;
+                else totals.usedMINIPending += 1;
+            }
+        });
+
+        return totals;
+    };
+
+    const {
+        newBMWDelivered, newBMWPending,
+        usedBMWDelivered, usedBMWPending,
+        cpoBMWDelivered, cpoBMWPending,
+        newMINIDelivered, newMINIPending,
+        cpoMINIDelivered, cpoMINIPending,
+        usedMINIDelivered, usedMINIPending
+    } = getTotalCounts();
+
     return (
         <div className="app">
             <nav>
                 <Link to="/">Home</Link>
                 <Link to="/add">Add Sale</Link>
+                <Link to="/table">Sales Table</Link>
             </nav>
+            <h1>Vehicle Sales Tracking</h1>
+            <div className="totals">
+                <span>New BMW: {newBMWDelivered} ({newBMWPending})</span>
+                <span>Used BMW: {usedBMWDelivered} ({usedBMWPending})</span>
+                <span>CPO BMW: {cpoBMWDelivered} ({cpoBMWPending})</span>
+                <span>New MINI: {newMINIDelivered} ({newMINIPending})</span>
+                <span>CPO MINI: {cpoMINIDelivered} ({cpoMINIPending})</span>
+                <span>Used MINI: {usedMINIDelivered} ({usedMINIPending})</span>
+            </div>
             <input 
                 type="text" 
                 placeholder="Search by stock number or client name"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+                className="search-input"
             />
             <Routes>
                 <Route path="/" element={
@@ -133,6 +195,7 @@ const AppContent = () => {
                 } />
                 <Route path="/add" element={<SaleForm onSave={handleSave} onCancel={() => navigate('/')} />} />
                 <Route path="/edit" element={<SaleForm sale={selectedSale} onSave={handleSave} onCancel={() => navigate('/')} />} />
+                <Route path="/table" element={<SalesTable sales={filteredSales} />} />
             </Routes>
         </div>
     );

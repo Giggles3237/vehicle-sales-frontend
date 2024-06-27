@@ -1,91 +1,58 @@
-.app {
+/* src/App.css */
+body {
   font-family: Arial, sans-serif;
-  padding: 20px;
+  background-color: #FFFFFF; /* White */
+  color: #262626; /* Type color */
 }
 
 nav {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #0653B6; /* BMW Blue */
+  padding: 10px;
 }
 
 nav a {
-  margin-right: 10px;
+  color: #FFFFFF; /* White */
   text-decoration: none;
-  color: #009ADA; /* Rich Electric Blue */
+  padding: 10px;
+}
+
+nav a:hover {
+  background-color: #1C69D3; /* Hover Bold */
+  border-radius: 5px;
+}
+
+h1 {
+  text-align: center;
+  color: #0653B6; /* BMW Blue */
+}
+
+.totals span {
+  display: block;
+  margin: 5px 0;
+  color: #4C4C4C; /* Default Bold */
+  font-weight: bold;
+}
+
+.search-input {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  border: 1px solid #6F6F6F; /* Gray */
+  border-radius: 5px;
+  width: 80%;
+}
+
+.advisor-summary {
+  border-bottom: 1px solid #6F6F6F; /* Gray */
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  font-weight: bold;
 }
 
 .sales-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.sales-list > * {
-  width: 110px; /* Fixed width to fit 10 across a 1200px wide container */
-  margin: 5px;
-}
-
-.date-range-picker {
-  margin-bottom: 20px;
-}
-
-.date-range-picker label {
-  margin-right: 20px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-  max-width: 300px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.advisor-summary {
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-/* Chip styles */
-.chip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 110px; 
-  height: 50px; /* Adjusted height */
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: transform 0.3s;
-  position: relative;
-}
-
-.chip-used {
-  background-color: #81C4FF; /* Light Sky Blue */
-}
-
-.chip-content {
-  text-align: center;
-}
-
-.chip-stock {
-  font-weight: bold;
-}
-
-.chip-hover {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.chip:hover .chip-hover {
-  display: block;
+  justify-content: flex-start; /* Align chips to the left */
 }

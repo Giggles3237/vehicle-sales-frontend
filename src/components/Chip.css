@@ -1,38 +1,103 @@
+/* src/components/Chip.css */
 .chip {
-    display: inline-block;
-    padding: 10px;
-    margin: 5px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #262626; /* Type color */
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  background-color: #FFFFFF; /* White */
+  color: #262626; /* Type color */
+  width: calc(10% - 10px); /* Adjusting width to fit 10 chips in a row */
+  height: 60px; /* Increased height */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em; /* Base font size */
+  transition: font-size 0.3s ease;
 }
 
-.chip-used {
-    background-color: #81C4FF; /* Light Sky Blue */
+.chip.used {
+  background-color: #0653B6; /* BMW Blue */
+  color: #FFFFFF; /* White */
 }
 
-.chip-content {
-    position: relative;
+.chip.delivered {
+  border: 2px solid #4C4C4C; /* Default Bold */
 }
 
-.chip-stock {
-    font-weight: bold;
+.chip.pending {
+  border: 2px solid #E7222E; /* Alizarin Crimson */
+  transform: rotate(10deg);
 }
 
-.chip-hover {
-    display: none;
-    position: absolute;
-    top: 20px;
-    left: 0;
-    background-color: #fff;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.chip-details {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: inherit; /* Match background color of chip */
+  color: inherit; /* Match text color of chip */
+  border: 1px solid #262626; /* Type color */
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Ensure details are on top */
+  border-radius: 5px; /* Match regular chip border radius */
+  width: 100%; /* Match the width of the chip */
+  box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
-.chip:hover .chip-hover {
-    display: block;
+.chip:hover .chip-details {
+  display: block;
+  z-index: 100; /* Bring to front on hover */
+}
+
+/* Ensure details stay within viewport */
+.chip-details::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #FFFFFF; /* White */
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.chip .stock-number {
+  font-weight: bold;
+  text-align: center;
+  font-size: inherit; /* Ensure the text scales with the chip */
+}
+
+.advisor-summary {
+  font-size: 1.2em; /* Slightly larger font size */
+  font-weight: bold;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+  .chip {
+    width: calc(20% - 10px); /* Adjusting width to fit 5 chips in a row */
+    font-size: 0.9em; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 768px) {
+  .chip {
+    width: calc(33.33% - 10px); /* Adjusting width to fit 3 chips in a row */
+    font-size: 0.8em; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .chip {
+    width: calc(50% - 10px); /* Adjusting width to fit 2 chips in a row */
+    font-size: 0.7em; /* Slightly smaller font size */
+  }
 }

@@ -1,3 +1,36 @@
+Frontend Dependencies:
+
+react
+react-dom
+react-router-dom
+react-table
+axios
+react-datepicker
+sh
+Copy code
+npm install react react-dom react-router-dom axios react-datepicker
+Backend Dependencies:
+
+express
+mongoose
+cors
+dotenv
+body-parser
+nodemon (development dependency)
+sh
+Copy code
+npm install express mongoose cors dotenv body-parser
+npm install --save-dev nodemon
+
+for seeding:
+pip install pandas pymongo
+pip install openpyxl
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
