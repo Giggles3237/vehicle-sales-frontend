@@ -2,8 +2,8 @@
 .chip {
   padding: 10px;
   margin: 5px;
-  border: 1px solid #262626; /* Type color */
-  border-radius: 5px;
+  border: 1px solid #0653B6; /* Type color */
+  border-radius: 0px;
   cursor: pointer;
   text-align: center;
   position: relative;
@@ -25,11 +25,11 @@
 }
 
 .chip.delivered {
-  border: 2px solid #4C4C4C; /* Default Bold */
+  border: 2px solid #0653B6; /* Default Bold */
 }
 
 .chip.pending {
-  border: 2px solid #E7222E; /* Alizarin Crimson */
+  border: 2px solid #0653B6; /* Alizarin Crimson */
   transform: rotate(10deg);
 }
 

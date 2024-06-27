@@ -1,58 +1,55 @@
-/* src/App.css */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #FFFFFF; /* White */
-  color: #262626; /* Type color */
+.app {
+  padding: 20px;
 }
 
-nav {
+.nav-buttons {
   display: flex;
   justify-content: space-around;
-  background-color: #0653B6; /* BMW Blue */
-  padding: 10px;
+  margin-bottom: 20px;
 }
 
-nav a {
-  color: #FFFFFF; /* White */
-  text-decoration: none;
-  padding: 10px;
-}
-
-nav a:hover {
-  background-color: #1C69D3; /* Hover Bold */
+.nav-buttons button {
+  padding: 10px 20px;
+  background-color: #009ADA;
+  color: #fff;
+  border: none;
   border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-h1 {
-  text-align: center;
-  color: #0653B6; /* BMW Blue */
+.nav-buttons button:hover {
+  background-color: #007bb5;
 }
 
-.totals span {
-  display: block;
-  margin: 5px 0;
-  color: #4C4C4C; /* Default Bold */
-  font-weight: bold;
+.totals {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
-.search-input {
-  display: block;
-  margin: 20px auto;
-  padding: 10px;
-  border: 1px solid #6F6F6F; /* Gray */
-  border-radius: 5px;
-  width: 80%;
-}
-
-.advisor-summary {
-  border-bottom: 1px solid #6F6F6F; /* Gray */
-  margin-bottom: 10px;
-  padding-bottom: 5px;
-  font-weight: bold;
+.date-picker-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .sales-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* Align chips to the left */
+}
+
+.advisor-summary {
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #0653B6; /* Default Bold */
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  box-sizing: border-box;
 }

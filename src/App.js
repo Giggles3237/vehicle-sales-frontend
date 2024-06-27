@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Chip from './components/Chip';
 import SaleForm from './components/SaleForm';
@@ -149,10 +149,10 @@ const AppContent = () => {
 
     return (
         <div className="app">
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/add">Add Sale</Link>
-                <Link to="/table">Sales Table</Link>
+            <nav className="nav-buttons">
+                <button onClick={() => navigate('/')}>Home</button>
+                <button onClick={() => navigate('/add')}>Add Sale</button>
+                <button onClick={() => navigate('/table')}>Sales Table</button>
             </nav>
             <h1>Vehicle Sales Tracking</h1>
             <div className="totals">
@@ -163,22 +163,23 @@ const AppContent = () => {
                 <span>CPO MINI: {cpoMINIDelivered} ({cpoMINIPending})</span>
                 <span>Used MINI: {usedMINIDelivered} ({usedMINIPending})</span>
             </div>
+            <div className="date-picker-container">
+                <DateRangePicker
+                    startDate={startDate}
+                    endDate={endDate}
+                    onStartDateChange={setStartDate}
+                    onEndDateChange={setEndDate}
+                />
+            </div>
             <input 
                 type="text" 
                 placeholder="Search by stock number or client name"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-input"
             />
             <Routes>
                 <Route path="/" element={
                     <>
-                        <DateRangePicker
-                            startDate={startDate}
-                            endDate={endDate}
-                            onStartDateChange={setStartDate}
-                            onEndDateChange={setEndDate}
-                        />
                         {getAdvisorSummary().map(([advisor, data]) => (
                             <div key={advisor}>
                                 <div className="advisor-summary">

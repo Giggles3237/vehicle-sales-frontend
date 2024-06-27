@@ -2,6 +2,12 @@
     padding: 20px;
 }
 
+.date-picker-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 .sales-table {
     width: 100%;
     border-collapse: collapse;
